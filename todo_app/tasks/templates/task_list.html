@@ -1,0 +1,25 @@
+<title>Task list</title>
+<body><h1 align="center">Task List</h1>
+
+<div class="row">
+    <div class="col">
+        <ul class="list-group">
+            {% for task in tasks %}
+
+            <li class="list-group-item"><h3>{{task}}</h3>
+                <div class="float-right">
+                    <button type="submit" class="btn btn-danger mb-2"><a href="{% url 'tasks:update_tasks' task.id %}">UPDATE</a></button>
+                    <button type="submit" class="btn btn-danger mb-2"><a href="{% url 'tasks:delete_task' task.id %}">DELETE</a></button>
+                    {% if task.status == True %}
+                    <strike>{{task}}</strike>
+                    {% endif %}
+                </div>
+
+            </li>
+
+            {% endfor %}
+
+        </ul>
+    </div>
+</div>
+</body>
